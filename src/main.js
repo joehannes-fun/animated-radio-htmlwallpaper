@@ -9,11 +9,11 @@ const startUrl = process.env.ELECTRON_START_URL || url.format({
   slashes: true
 });
 
+
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1366,
-    height: 768,
     frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -22,6 +22,10 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl);
+  mainWindow.setAlwaysOnTop(false, "normal", -3);
+  mainWindow.maximize();
+  mainWindow.setSkipTaskbar(true);
+  mainWindow.blur();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
